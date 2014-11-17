@@ -140,6 +140,25 @@ It is a black box which represents 2 polynomials as a list of points and then mu
 
 $N^{th}$ Roots of Unity can be found by: $ cos(\frac{2\pi j}{n}) + i \cdot sin(\frac{2\pi j}{n})$
 
+\subsection{P/NP Basics}
+
+\textbf{P:} search problem that can be solved in polynomial time.
+
+\textbf{NP:} search problem that can be checked to be correct in polynomial time.
+
+\textbf{NP complete:} search problem that is at least as hard as every other NP complete problem. Basically it reduces to circuit sat, could possibly be solved in polynomial time but we doubt it.
+
+\textbf{NP hard:} there exists NP complete Y such that Y is reducible to X but can't go the other way around. Not actually in NP.
+
+\subsection{Reductions}
+A search problem is NP-complete if all other search problems reduce to it.
+
+To reduce X to Y means to find a solution for X using Y.
+
+\includegraphics[scale=0.5]{reduction}
+
+
+
 \rule{0.3\linewidth}{0.25pt}
 \newpage
 \scriptsize
