@@ -140,6 +140,10 @@ Find shortest paths with negative edges as long as there are no negative cycles.
 
 \includegraphics[scale=0.5]{BF2}
 
+\textbf{Floyd-Warshall: $O((V^3)$}
+
+Find the shortest path between all pairs of vertexes in a graph.
+
 \textbf{Kruskal: O((E log(V))}
 
 Use the disjoint set trees to add edges in ascending order that don't complete a cycle. Used to find MST.
@@ -152,6 +156,19 @@ On each iteration, the subtree defined by X grows by one edge, namely, the light
 between a vertex in S and a vertex outside S
 
 \includegraphics[scale=0.42]{prim}
+
+\textbf{Cut Property:}
+Suppose edges $X$ are part of a minimum spanning tree of
+$G = (V, E)$. Pick any subset of nodes $S$ for which $X$ does not
+cross between $S$ and $V-S$, and let $e$ be the lightest edge across the
+partition. Then $X \cup e$ is part of some Minimum Spanning Tree.
+
+
+
+\textbf{Huffman Encoding}
+
+Make a tree of decisions of whether to pick a 0 or a 1, make all the leaves values.
+Then we can follow the tree down to decode a Huffman encoding of values.
 
 \subsection{FFT}
 
@@ -175,6 +192,36 @@ A search problem is NP-complete if all other search problems reduce to it.
 To reduce X to Y means to find a solution for X using Y.
 
 \includegraphics[scale=0.42]{reduction}
+
+
+
+\subsection{Dynamic Programming}
+
+These are normally straight forward, mainly we just need to find a recursive relationship for sub problems and then figure out the order in which we need to solve them.
+Normally runtime can easily be deduced by the number of for loops we have to run to.
+Following are some basic examples of dynamic programming in case we see something like these on the final.
+
+\textbf{Edit Distance: $O(n^2)$}
+
+\includegraphics[scale=0.42]{edit}
+
+\textbf{Knapsack with repetition: $O(nW)$}
+
+K(w) is the maximum value we can achieve with weight w.
+
+\includegraphics[scale=0.5]{knapNR}
+
+\textbf{Knapsack without repetition: $O(nW)$}
+
+$K(w, j)$ = maximum value achievable using a knapsack of capacity $w$ and items $1, . . . , j$.
+
+\includegraphics[scale=0.5]{knapWR}
+
+
+
+
+
+
 
 
 
