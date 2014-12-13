@@ -1,4 +1,4 @@
-\documentclass[3pt,landscape]{article}
+\documentclass[landscape]{article}
 %ss[10pt,landscape]{article}
 \usepackage{multicol}
 \usepackage{calc}
@@ -118,27 +118,46 @@ $O(n^{log_b(a)})$ if $d < log_b(a)$
 Guaranteed to visit every node reachable by $v$ before returning from $v$.
 Can create topological sort of DAG.
 
+\includegraphics[scale=0.5]{DFS}
+
 \textbf{BFS: O(V + E)}
 
 Used to find shortest path through an unweighted graph.
+
+\includegraphics[scale=0.5]{BFS}
 
 \textbf{Dijkstras: O((V + E) log V)}
 
 Like BFS but with priority queue, used to find shortest path between two nodes on a weighted graph.
 
+\includegraphics[scale=0.5]{dijkstra}
+
 \textbf{Bellman Ford: O((V  E)}
 
 Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges.
+
+\includegraphics[scale=0.5]{BF1}
+
+\includegraphics[scale=0.5]{BF2}
 
 \textbf{Kruskal: O((E log(V))}
 
 Use the disjoint set trees to add edges in ascending order that don't complete a cycle. Used to find MST.
 
+\includegraphics[scale=0.5]{kruskal}
+
+\textbf{Prim's: O((E log(V))}
+
+On each iteration, the subtree defined by X grows by one edge, namely, the lightest edge
+between a vertex in S and a vertex outside S
+
+\includegraphics[scale=0.42]{prim}
+
 \subsection{FFT}
 
 It is a black box which represents 2 polynomials as a list of points and then multiplies them together to create a new polynomial. Takes \textbf{O(N log N)} time. Uses roots of unity to determine where to multiply two polynomials together.
 
-$N^{th}$ Roots of Unity can be found by: $ cos(\frac{2\pi j}{n}) + i \cdot sin(\frac{2\pi j}{n})$
+\textbf{$N^{th}$ Roots of Unity} can be found by: $ cos(\frac{2\pi j}{n}) + i \cdot sin(\frac{2\pi j}{n})$
 
 \subsection{P/NP Basics}
 
@@ -155,7 +174,7 @@ A search problem is NP-complete if all other search problems reduce to it.
 
 To reduce X to Y means to find a solution for X using Y.
 
-\includegraphics[scale=0.5]{reduction}
+\includegraphics[scale=0.42]{reduction}
 
 
 
