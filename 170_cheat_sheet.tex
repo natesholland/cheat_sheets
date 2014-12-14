@@ -112,6 +112,13 @@ $O(n^{log_b(a)})$ if $d < log_b(a)$
 
 \end{description}
 
+\subsection*{Sorting Algorithm Runtimes}
+$HeapSort \textit{ and } MergeSort \rightarrow \Theta{(n\log{n})}$
+
+$InsertionSort \rightarrow \Omega{(n)} \textit{ to } O(n^2)$
+
+$QuickSort \rightarrow \Omega{(n\log{n})} \textit{ to } O(n^2)$
+
 \subsection*{Graph Algorithms}
 
 \textbf{DFS: O(V + E)}
@@ -133,13 +140,13 @@ Used to find shortest path through an unweighted graph.
 
 \textbf{Dijkstras: O((V + E) log V)}
 
-Like BFS but with priority queue, used to find shortest path between two nodes on a weighted graph. Does not work with negative edge weights.
+Like BFS but with priority queue, used to find shortest path between two nodes on a weighted graph. Does not work with negative edge weights. 
 
 \includegraphics[scale=0.5]{dijkstra}
 
 \textbf{Bellman Ford: O(V  E)}
 
-Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges. To find a negative cycle, run $V$ times, if values are updated after the $V -1$ update, then there must be a negative cycle.
+Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges. To find a negative cycle, run $V$ times, if values are updated after the $V -1$ update, there must be a negative cycle. $update()$ is harmless.
 
 \includegraphics[scale=0.5]{BF1}
 
@@ -147,18 +154,18 @@ Find shortest paths with negative edges as long as there are no negative cycles.
 
 \textbf{Floyd-Warshall: $O(V^3)$}
 
-Find the shortest path between all pairs of vertexes in a graph.
+Find the shortest path between all pairs of vertexes in a graph with positive or negative edge weights. 
 
-\textbf{Kruskal: O((E log(V))}
+\textbf{Kruskal: O(E log V)}
 
-Use the disjoint set trees to add edges in ascending order that don't complete a cycle. Used to find MST.
+Use the disjoint set trees to add edges in order of increasing edge weight that doesn't complete a cycle. Used to find MST.
 
 \includegraphics[scale=0.5]{kruskal}
 
-\textbf{Prim's: O(E log(V))}
+\textbf{Prim's: O((V + E) log V)}
 
 On each iteration, the subtree defined by X grows by one edge, namely, the lightest edge
-between a vertex in S and a vertex outside S
+between a vertex in S and a vertex outside S. Similar implementation as Dijkstra's. 
 
 \includegraphics[scale=0.42]{prim}
 
