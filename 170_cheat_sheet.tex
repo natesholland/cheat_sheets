@@ -257,10 +257,30 @@ To reduce X to Y means to find a solution for X using Y.
 \includegraphics[scale=0.42]{reduction}
 
 
+\subsection{Dealing with NP}
 
+There are different ways to deal with NP, one is to do intelligent but exhaustive searching.
+This basically involves stopping looking at a branch as soon as we know that what we've selected won't work.
+This is basically just pruning on a tree.
 
+\textbf{Approximations}
 
+These would be like the example where we use the MST tree to find an approximation which is at most 2 times worse than the optimal solution to the TSP problem.
 
+There are certain classes of approximations which are as follows:
+
+\begin{itemize}
+	\item Those for which, like the TSP, no finite approximation ratio is possible.
+	\item Those for which an approximation ratio is possible, but there are limits to how small
+this can be. VERTEX COVER, k-CLUSTER, and the TSP with triangle inequality belong here
+	\item Approximability has no limits, and polynomial approximation algorithms with error ratios arbitrarily close to zero exist. KNAPSACK resides here.
+	\item Finally, there is another class of problems, between the first two given here, for which
+the approximation ratio is about log n. SET COVER is an example
+\end{itemize}
+
+\textbf{Local Search Heuristics}
+
+These can often be useful in practice but provide no guarantees for how well or how fast they will approximate the actual value.
 
 
 
