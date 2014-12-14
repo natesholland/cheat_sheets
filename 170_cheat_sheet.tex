@@ -183,9 +183,9 @@ It is a black box which represents 2 polynomials as a list of points and then mu
 
 \subsection{Dynamic Programming}
 
-These are normally straight forward, mainly we just need to find a recursive relationship for sub problems and then figure out the order in which we need to solve them.
-Normally runtime can easily be deduced by the number of for loops we have to run to.
-Following are some basic examples of dynamic programming in case we see something like these on the final.
+Find a recursive relationship for sub problems and then figure out the order in which we need to solve them.
+Runtime can easily be deduced by the number of for loops we have to run.
+Following are some basic examples of dynamic programming:
 
 \textbf{Edit Distance: $O(n^2)$}
 
@@ -202,6 +202,30 @@ K(w) is the maximum value we can achieve with weight w.
 $K(w, j)$ = maximum value achievable using a knapsack of capacity $w$ and items $1, . . . , j$.
 
 \includegraphics[scale=0.5]{knapWR}
+
+\textbf{Longest Palindromic Subsequence: $O(n^2)$}
+
+Takes sequence $x[1\ldots n]$ and returns the length of the longest palindromic subsequence.
+
+For $0\leq i,j\leq n$ define $f(i,j)=$ length of the longest palindromic subsequence of $x[i\ldots j]$.  
+
+Base case: when $i>j$ (empty string), $ f(i,j) = 0$; when $i == j$ (single character), $f(i,j) = 1$
+
+When $i<j$, 
+\[
+ f(i,j) = max
+  \begin{cases}
+   f(i+1,j) \\
+   f(i,j-1)\\
+   2+f(i+1,j-1) & \text{if } x [i] = x[j]
+  \end{cases}
+\]
+
+\textbf{Optimal Binary Search Tree with Probabilities:}
+Let $S(i,j)$ be the cost of the cheapest tree formed by words $i$ to $j$, for $1\leq i \leq j \leq n$. Also $S(i,j) = 0$ if $i>j$.  Compute $S(i,j)$ by looking at all choices of which word to use as the root of the tree; the root could be word $k$, for any $k$ where $i\leq k \leq j$.  If $k$ is at the root, the cost of the left subtree is $S(i,k-1)$ an the right is $S(k+1, j)$.  All words need to pay one comparison at the root node and the cost of the words to the left of right can be determined recursively, so if we place work $k$ at the root, the total cost of the tree will be:
+
+$$ \sum^k_{t=i} p_t + S(i,k-1) + S(k+1, j)$$
+giving $S(i,j) = \min_{i\leq k \leq j}\{\text{the above cost}\}$
 
 \subsection{Linear Programming}
 
@@ -314,11 +338,11 @@ Note: for efficiency, normalize feature vecotors to have the same range of value
 \textbf{Decision Tree Inference (NP Hard)}
 A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rightarrow \mathcal{Y}$ where each leaf is labled with a decision of a classification $y \in \mathcal{Y}$. If there is an observation $x \in \mathbb{R}^2$ then we start at the root of the tree and go to the left or right child depending on the threshold value $t$. Repeat until a leaf is reached. Inference on decision trees is a greedy approach where test points in $S$ are split into $S_L$ and $S_R$ by estimating the relation of test data into similar camps (left subtrees and right subtrees). Recurse the subtrees until 
 
-1) all remaining subtrees have the same calssification
+1) all remaining subtrees have the same classification
 
-2) after a certian node depth then choose most-common class or
+2) after a certain node depth then choose most-common class or
 
-3) after class entropy falls beneath a threashod
+3) after class entropy falls beneath a threshold
 
 \textbf{Random Forests}
 A $RandomForest$ is a collection of decision trees. The goal is to reduce the error rate by classifying an observation $x$ through many decision trees and selecitng the most common class as the result. Assumes each decision tree is different. Can creat random  trees through either
