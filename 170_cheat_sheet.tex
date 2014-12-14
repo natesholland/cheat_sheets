@@ -132,15 +132,15 @@ Like BFS but with priority queue, used to find shortest path between two nodes o
 
 \includegraphics[scale=0.5]{dijkstra}
 
-\textbf{Bellman Ford: O((V  E)}
+\textbf{Bellman Ford: O(V  E)}
 
-Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges.
+Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges. To find a negative cycle, run $V$ times, if values are updated after the $V -1$ update, then there must be a negative cycle.
 
 \includegraphics[scale=0.5]{BF1}
 
 \includegraphics[scale=0.5]{BF2}
 
-\textbf{Floyd-Warshall: $O((V^3)$}
+\textbf{Floyd-Warshall: $O(V^3)$}
 
 Find the shortest path between all pairs of vertexes in a graph.
 
@@ -150,7 +150,7 @@ Use the disjoint set trees to add edges in ascending order that don't complete a
 
 \includegraphics[scale=0.5]{kruskal}
 
-\textbf{Prim's: O((E log(V))}
+\textbf{Prim's: O(E log(V))}
 
 On each iteration, the subtree defined by X grows by one edge, namely, the lightest edge
 between a vertex in S and a vertex outside S
@@ -185,6 +185,7 @@ It is a black box which represents 2 polynomials as a list of points and then mu
 \textbf{NP complete:} search problem that is at least as hard as every other NP complete problem. Basically it reduces to circuit sat, could possibly be solved in polynomial time but we doubt it.
 
 \textbf{NP hard:} there exists NP complete Y such that Y is reducible to X but can't go the other way around. Not actually in NP.
+\begin{center}\includegraphics[scale=0.42]{complexity}\end{center}
 
 \subsection{Reductions}
 A search problem is NP-complete if all other search problems reduce to it.
@@ -217,6 +218,18 @@ $K(w, j)$ = maximum value achievable using a knapsack of capacity $w$ and items 
 
 \includegraphics[scale=0.5]{knapWR}
 
+\subsection{Machine Learning}
+
+\textbf{Classification}
+Let $\mathcal{Y}$ donote a set of classes. For a boolean classification, such as spam filters, $\mathcal{Y} = \{0, 1\}$. Let the obersvation $x \in \mathbb{R}^d$ denote a $d$-dimensional vector of features.
+
+\textbf{K-Nearest Neighbors: $\Theta(n(d + \log k))$}
+
+Let $x_i \ldots x_{i+k}$ be the $k$ nearest obeservations to $x$ from the trained set. Classify $x$ with the class with the plurality of votes from the $k$ feature vectors.
+
+Note: for efficiency, normalize feature vecotors to have the same range of values before applying k-NN. Algorithm peforms worse if the dimesion $d$ is too large.
+
+\textbf{Random Forests}
 
 
 
