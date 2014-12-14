@@ -112,6 +112,13 @@ $O(n^{log_b(a)})$ if $d < log_b(a)$
 
 \end{description}
 
+\subsection*{Sorting Algorithm Runtimes}
+$HeapSort \textit{ and } MergeSort \rightarrow \Theta{(n\log{n})}$
+
+$InsertionSort \rightarrow \Omega{(n)} \textit{ to } O(n^2)$
+
+$QuickSort \rightarrow \Omega{(n\log{n})} \textit{ to } O(n^2)$
+
 \subsection*{Graph Algorithms}
 
 \textbf{DFS: O(V + E)}
@@ -133,13 +140,13 @@ Used to find shortest path through an unweighted graph.
 
 \textbf{Dijkstras: O((V + E) log V)}
 
-Like BFS but with priority queue, used to find shortest path between two nodes on a weighted graph.
+Like BFS but with priority queue, used to find shortest path between two nodes on a weighted graph. Does not work with negative edge weights. 
 
 \includegraphics[scale=0.5]{dijkstra}
 
 \textbf{Bellman Ford: O(V  E)}
 
-Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges. To find a negative cycle, run $V$ times, if values are updated after the $V -1$ update, then there must be a negative cycle.
+Find shortest paths with negative edges as long as there are no negative cycles. Runs $V -1$ updates on all E edges. To find a negative cycle, run $V$ times, if values are updated after the $V -1$ update, there must be a negative cycle. $update()$ is harmless.
 
 \includegraphics[scale=0.5]{BF1}
 
@@ -147,18 +154,18 @@ Find shortest paths with negative edges as long as there are no negative cycles.
 
 \textbf{Floyd-Warshall: $O(V^3)$}
 
-Find the shortest path between all pairs of vertexes in a graph.
+Find the shortest path between all pairs of vertexes in a graph with positive or negative edge weights. 
 
-\textbf{Kruskal: O((E log(V))}
+\textbf{Kruskal: O(E log V)}
 
-Use the disjoint set trees to add edges in ascending order that don't complete a cycle. Used to find MST.
+Use the disjoint set trees to add edges in order of increasing edge weight that doesn't complete a cycle. Used to find MST.
 
 \includegraphics[scale=0.5]{kruskal}
 
-\textbf{Prim's: O(E log(V))}
+\textbf{Prim's: O((V + E) log V)}
 
 On each iteration, the subtree defined by X grows by one edge, namely, the lightest edge
-between a vertex in S and a vertex outside S
+between a vertex in S and a vertex outside S. Similar implementation as Dijkstra's. 
 
 \includegraphics[scale=0.42]{prim}
 
@@ -242,7 +249,7 @@ This is bounded by $O( C \cdot E)$ or $O ( V \cdot E^2)$
 
 \textbf{Maximum flow property:} if all edge capacities are integers, then the optimal flow found by our algorithm is integral. We can see this directly from the algorithm, which in such cases would increment the flow by an integer amount on each iteration.
 
-When drawing the residuals make sure you draw the flow you've already used backwards, so some paths with have an arror going forward and an arrow going backward.
+When drawing the residuals make sure you draw the flow you've already used backwards, so some paths with have an arrow going forward and an arrow going backward.
 
 
 \subsection{P/NP}
@@ -327,16 +334,16 @@ Generally we will choose our T to start large and then decrease as we go on so t
 \subsection{Machine Learning}
 
 \textbf{Classification}
-Let $\mathcal{Y}$ donote a set of classes. For a boolean classification, such as spam filters, $\mathcal{Y} = \{0, 1\}$. Let the obersvation $x \in \mathbb{R}^d$ denote a $d$-dimensional vector of features.
+Let $\mathcal{Y}$ denote a set of classes. For a boolean classification, such as spam filters, $\mathcal{Y} = \{0, 1\}$. Let the observation $x \in \mathbb{R}^d$ denote a $d$-dimensional vector of features.
 
 \textbf{K-Nearest Neighbors: $\Theta(n(d + \log k))$}
 
-Let $x_i \ldots x_{i+k}$ be the $k$ nearest obeservations to $x$ from the trained set. Classify $x$ with the class with the plurality of votes from the $k$ feature vectors.
+Let $x_i \ldots x_{i+k}$ be the $k$ nearest observations to $x$ from the trained set. Classify $x$ with the class with the plurality of votes from the $k$ feature vectors.
 
-Note: for efficiency, normalize feature vecotors to have the same range of values before applying k-NN. Algorithm peforms worse if the dimesion $d$ is too large.
+Note: for efficiency, normalize feature vectors to have the same range of values before applying k-NN. Algorithm performs worse if the dimension $d$ is too large.
 
 \textbf{Decision Tree Inference (NP Hard)}
-A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rightarrow \mathcal{Y}$ where each leaf is labled with a decision of a classification $y \in \mathcal{Y}$. If there is an observation $x \in \mathbb{R}^2$ then we start at the root of the tree and go to the left or right child depending on the threshold value $t$. Repeat until a leaf is reached. Inference on decision trees is a greedy approach where test points in $S$ are split into $S_L$ and $S_R$ by estimating the relation of test data into similar camps (left subtrees and right subtrees). Recurse the subtrees until 
+A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rightarrow \mathcal{Y}$ where each leaf is labeled with a decision of a classification $y \in \mathcal{Y}$. If there is an observation $x \in \mathbb{R}^2$ then we start at the root of the tree and go to the left or right child depending on the threshold value $t$. Repeat until a leaf is reached. Inference on decision trees is a greedy approach where test points in $S$ are split into $S_L$ and $S_R$ by estimating the relation of test data into similar camps (left subtrees and right subtrees). Recurse the subtrees until 
 
 1) all remaining subtrees have the same classification
 
@@ -345,7 +352,7 @@ A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rig
 3) after class entropy falls beneath a threshold
 
 \textbf{Random Forests}
-A $RandomForest$ is a collection of decision trees. The goal is to reduce the error rate by classifying an observation $x$ through many decision trees and selecitng the most common class as the result. Assumes each decision tree is different. Can creat random  trees through either
+A $RandomForest$ is a collection of decision trees. The goal is to reduce the error rate by classifying an observation $x$ through many decision trees and selecting the most common class as the result. Assumes each decision tree is different. Can create random  trees through either
 
 1) Bagging (used more): train each tree on a random subset of the training set $S$. If $S$ contains $n$ test observations, then sample with replacement $n$ times to create our random subset $S^* \in S$. The expected size of $S^*$ is about 63\% the size of $S$. Use the Decision Tree Inference algorithm to construct a tree from $S^*$.
 
