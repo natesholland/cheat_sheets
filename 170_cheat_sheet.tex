@@ -307,6 +307,15 @@ Let $x_i \ldots x_{i+k}$ be the $k$ nearest obeservations to $x$ from the traine
 
 Note: for efficiency, normalize feature vecotors to have the same range of values before applying k-NN. Algorithm peforms worse if the dimesion $d$ is too large.
 
+\textbf{Decision Tree Inference (NP Hard)}
+A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rightarrow \mathcal{Y}$ where each leaf is labled with a decision of a classification $y \in \mathcal{Y}$. If there is an observation $x \in \mathbb{R}^2$ then we start at the root of the tree and go to the left or right child depending on the threshold value $t$. Repeat until a leaf is reached. Inference on decision trees is a greedy approach where test points in $S$ are split into $S_L$ and $S_R$ by estimating the relation of test data into similar camps (left subtrees and right subtrees). Recurse the subtrees until 
+
+1) all remaining subtrees have the same calssification
+
+2) after a certian node depth then choose most-common class or
+
+3) after class entropy falls beneath a threashod
+
 \textbf{Random Forests}
 
 
