@@ -121,6 +121,10 @@ Can create topological sort of DAG.
 
 \includegraphics[scale=0.5]{DFS}
 
+Pre and post ordering and the edge types look like this:
+
+\includegraphics[scale=0.5]{prepost}
+
 \textbf{BFS: O(V + E)}
 
 Used to find shortest path through an unweighted graph.
@@ -216,7 +220,7 @@ This is bounded by $O( C \cdot E)$ or $O ( V \cdot E^2)$
 
 When drawing the residuals make sure you draw the flow you've already used backwards, so some paths with have an arror going forward and an arror going backward.
 
-\newpage 
+
 \subsection{P/NP}
 
 \textbf{P:} search problem that can be solved in polynomial time.
@@ -322,7 +326,6 @@ A $RandomForest$ is a collection of decision trees. The goal is to reduce the er
 1) Bagging (used more): train each tree on a random subset of the training set $S$. If $S$ contains $n$ test observations, then sample with replacement $n$ times to create our random subset $S^* \in S$. The expected size of $S^*$ is about 63\% the size of $S$. Use the Decision Tree Inference algorithm to construct a tree from $S^*$.
 
 2) Feature Sampling: using a subset of $d$ features when constructing the tree. Reduces the likely hood that each tree has the same prominent feature at its root.
-
 
 \rule{0.3\linewidth}{0.25pt}
 \newpage
