@@ -285,6 +285,15 @@ the approximation ratio is about log n. SET COVER is an example
 
 These can often be useful in practice but provide no guarantees for how well or how fast they will approximate the actual value.
 
+We then deal with local optimum by using \textbf{randomization and restarts}.
+This means that we will effectively run the search multiple times with different random starting points.
+This gives us a better probability of finding the correct (or better) local optima.
+
+\textbf{Simulated annealing} is another technique where we sometimes follow the optimal path, and with some random probability we actually go backwards in our search.
+
+\includegraphics[scale=0.45]{annealing}
+
+
 
 \subsection{Machine Learning}
 
