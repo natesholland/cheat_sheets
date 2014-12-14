@@ -317,6 +317,11 @@ A $Decision Tree$ is a binary tree that represents a function $\mathbb{R}^2 \rig
 3) after class entropy falls beneath a threashod
 
 \textbf{Random Forests}
+A $RandomForest$ is a collection of decision trees. The goal is to reduce the error rate by classifying an observation $x$ through many decision trees and selecitng the most common class as the result. Assumes each decision tree is different. Can creat random  trees through either
+
+1) Bagging (used more): train each tree on a random subset of the training set $S$. If $S$ contains $n$ test observations, then sample with replacement $n$ times to create our random subset $S^* \in S$. The expected size of $S^*$ is about 63\% the size of $S$. Use the Decision Tree Inference algorithm to construct a tree from $S^*$.
+
+2) Feature Sampling: using a subset of $d$ features when constructing the tree. Reduces the likely hood that each tree has the same prominent feature at its root.
 
 
 \rule{0.3\linewidth}{0.25pt}
